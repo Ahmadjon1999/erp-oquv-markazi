@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan o'tish</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .register-card {
+            border-radius: 15px;
+            border: none;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center min-vh-100">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card register-card shadow-lg p-4 bg-white">
+                    <h3 class="text-center mb-4 text-primary fw-bold">ERP Tizimida Ro'yxatdan O'tish</h3>
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger p-2 small" role="alert">
+                                {{ form.non_field_errors }}
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">Foydalanuvchi nomi (Username)</label>
+                            {{ form.username }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">Email manzil</label>
+                            {{ form.email }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">Parol</label>
+                            {{ form.password }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">Parolni tasdiqlang</label>
+                            {{ form.password_confirm }}
+                        </div>
+
+                        <div class="mb-4 form-check form-switch">
+                            {{ form.is_teacher }}
+                            <label class="form-check-label fw-semibold text-dark" for="id_is_teacher">Men o'qituvchiman</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">Ro'yxatdan o'tish</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

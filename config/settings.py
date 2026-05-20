@@ -13,7 +13,7 @@ SECRET_KEY =env.str('SECRET_KEY')
 
 DEBUG =env.bool('DEBUG', False)
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOST')
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -122,8 +124,12 @@ STATICFILES_DIRS = [
 ]
 
 
-MEDIA_URL   = 'media/'
-MEDIA_ROOT  = BASE_DIR / 'media/'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+AUTH_USER_MODEL = 'accounts.User'
