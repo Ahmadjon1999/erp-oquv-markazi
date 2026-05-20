@@ -17,7 +17,10 @@ class Course(models.Model):
     title = models.CharField(verbose_name="Kurs nomi", max_length=200)
     price = models.DecimalField(verbose_name="Narxi", max_digits=12, decimal_places=2)
     description = models.TextField(verbose_name="Kurs haqida ma'lumot")
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     teacher = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Ustoz")
+    created_at = models.DateTimeField(auto_now_add=True)
+    thumbnail = models.ImageField(upload_to="courses/", blank=True)
 
     class Meta:
         verbose_name = "Kurs"
