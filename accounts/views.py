@@ -33,35 +33,6 @@ def home_view(request):
 
 
 
-# def register_view(request):
-#     if request.method == "POST":
-#         form = RegisterForm(request.POST)
-        
-#         if form.is_valid():
-#             user = form.save(commit=False)
-            
-#             raw_password = form.cleaned_data.get('password')
-#             user.set_password(raw_password)
-#             user.save()  
-        
-#             if user.is_teacher:
-#                 TeacherProfile.objects.create(user=user, subject="Belgilanmagan")
-#             else:
-#                 # O'quvchi bo'lsa, unga o'quvchi profili ochiladi
-#                 StudentProfiles.objects.create(user=user)
-
-#             login(request, user)
-#             return redirect('home')  
-    
-#     else:
-#         form = RegisterForm()
-        
-#     return render(request, 'accounts/register.html', {'form': form})
-
-
-
-
-
 
 
 
