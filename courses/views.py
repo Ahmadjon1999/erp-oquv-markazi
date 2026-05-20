@@ -7,7 +7,8 @@ from .models import Course, Lesson, Enrollment
 # 1. /courses/ - Kurslar ro'yxati (Hamma ko'radi)
 def course_list(request):
     courses = Course.objects.all()
-    return render(request, 'courses/course_list.html', {'courses': courses})
+    data = {'courses': courses}
+    return render(request, 'courses/course_list.html', context=data)
 
 
 # 2. /courses/id/ - Kurs batafsil (Hamma ko'radi)
