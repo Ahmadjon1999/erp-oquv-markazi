@@ -8,6 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('auth/', include("accounts.urls")),
+    
+
     # 2. Kurslar bilan bog'liq barcha yo'llarni courses ilovasiga yo'naltiramiz
     path('courses/', include('courses.urls')),
     path('', home_view, name='home'),  # Bosh sahifa yo'li
