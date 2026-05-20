@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="display-4">{{ course.title }}</h1>
+        <p class="text-muted">Ustoz: {{ course.teacher.get_full_name|default:course.teacher.username }}</p>
+        <hr>
+        <h4 class="mt-4">Kurs haqida:</h4>
+        <p class="lead">{{ course.description }}</p>
+        
+        <h4 class="mt-5">Kurs darslari:</h4>
+        <div class="list-group mb-4">
+            {% for lesson in lessons %}
+                <a href="{% url 'lesson_detail' lesson.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <span>{{ lesson.order }}. {{ lesson.title }}</span>
+                    <span class="badge bg-secondary rounded-pill">Video</span>
+                </a>
+            {% empty %}
+                <p class="text-muted">Bu kursda hali darslar yo'q.</p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm sticky-top" style="top: 20px;">
+            <div class="card-body text-center">
+                <h3 class="card-title text-success my-3">{{ course.price }} so'm</h3>
+                <a href="{% url 'enroll' course.id %}" class="btn btn-success btn-lg w-100">Kursga yozilish</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
