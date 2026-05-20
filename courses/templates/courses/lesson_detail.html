@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'course_list' %}">Kurslar</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'course_detail' lesson.course.id %}">{{ lesson.course.title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ lesson.title }}</li>
+          </ol>
+        </nav>
+
+        <h2 class="my-3">{{ lesson.order }}-dars: {{ lesson.title }}</h2>
+        
+        <div class="ratio ratio-16x9 my-4 border bg-dark rounded shadow">
+            {% if lesson.video %}
+                <video src="{{ lesson.video.url }}" controls controlsList="nodownload"></video>
+            {% else %}
+                <div class="d-flex align-items-center justify-content-center text-white">
+                    <p>Bu darsga video yuklanmagan.</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="d-flex justify-content-between my-4">
+            <a href="{% url 'course_detail' lesson.course.id %}" class="btn btn-outline-secondary">Kurs mundarijasiga qaytish</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

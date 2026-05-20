@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Mavjud Kurslarimiz</h2>
+<div class='row'>
+    {% for course in courses %}
+    <div class='col-md-4 mb-4'>
+        <div class='card h-100 shadow-sm'>
+            <div class='card-body d-flex flex-column'>
+                <h5 class='card-title'>{{ course.title }}</h5>
+                <p class='card-text text-muted'>{{ course.description|truncatewords:15 }}</p>
+                <p class='mt-auto fw-bold text-primary'>{{ course.price }} so'm</p>
+                <a href="{% url 'course_detail' course.id %}" class='btn btn-outline-primary w-100 mt-2'>Kursni ko'rish</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p class="alert alert-warning">Hozircha hech qanday kurs mavjud emas.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
