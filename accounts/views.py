@@ -26,7 +26,6 @@ def register_view(request):
     return render(request, 'accounts/register.html', {'form': form})
 
 
-# 2. Siz aytgan Bosh sahifa logikasi (Sizning kodingiz!)
 def home_view(request):
     return render(request, 'accounts/home.html')
 
