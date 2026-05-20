@@ -4,8 +4,8 @@ from .models import Assignment, Submission, Grade
 
 @admin.register(Assignment)
 class AssignmentAdmin(admin.ModelAdmin):
-    list_display = ['title', 'deadline', 'created_at']
-    list_filter = ['deadline', 'created_at']
+    list_display = ['title', 'deadline']
+    list_filter = ['deadline']
     search_fields = ['title', 'description']
     ordering = ['-deadline']
 
@@ -20,7 +20,7 @@ class SubmissionAdmin(admin.ModelAdmin):
 
 @admin.register(Grade)
 class GradeAdmin(admin.ModelAdmin):
-    list_display = ['submission', 'score', 'grader', 'graded_at']
+    list_display = ['submission', 'score', 'graded_at']
     list_filter = ['score', 'graded_at']
-    search_fields = ['submission__student__username', 'submission__assignment__title', 'grader__username']
+    search_fields = ['submission__student__username', 'submission__assignment__title']
     raw_id_fields = ['submission']

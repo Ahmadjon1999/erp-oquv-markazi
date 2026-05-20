@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Bosh Sahifa - ERP O'quv Markazi{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="p-5 mb-4 bg-dark text-white rounded-3 border border-secondary shadow">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold text-success">ERP O'quv Markazi Tizimi</h1>
+            <p class="col-md-8 fs-5 text-secondary">
+                O'quv jarayonlarini avtomatlashtirish, darslarni kuzatish, vazifalarni topshirish va ularni baholash uchun mo'ljallangan yagona platforma.
+            </p>
+            {% if not user.is_authenticated %}
+                <a class="btn btn-success btn-lg px-4 rounded-pill fw-medium" href="#">
+                    <i class="bi bi-box-arrow-in-right me-2"></i> Tizimga Kirish
+                </a>
+            {% else %}
+                <span class="badge bg-secondary p-2 fs-6 rounded border border-success text-success">
+                    <i class="bi bi-shield-check me-1"></i> Tizim faol: {{ user.username }}
+                </span>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row align-items-stretch g-4">
+        <div class="col-md-6">
+            <div class="h-100 p-4 bg-white border rounded-3 shadow-sm d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light p-2 rounded text-success me-3 border">
+                            <i class="bi bi-journal-bookmark fs-3"></i>
+                        </div>
+                        <h2 class="h4 mb-0 fw-semibold">O'quv Kurslari</h2>
+                    </div>
+                    <p class="text-muted">
+                        Mavjud bako'p fanlar, dars jadvallari va guruhlar ro'yxati bilan tanishing. Dars materiallarini yuklab oling.
+                    </p>
+                </div>
+                <a class="btn btn-outline-dark w-100 mt-3 rounded-pill" href="#">
+                    Kurslarni ko'rish <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="h-100 p-4 bg-white border rounded-3 shadow-sm d-flex flex-column justify-content-between">
+                <div>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light p-2 rounded text-success me-3 border">
+                            <i class="bi bi-clipboard-check fs-3"></i>
+                        </div>
+                        <h2 class="h4 mb-0 fw-semibold">Vazifalar moduli</h2>
+                    </div>
+                    <p class="text-muted">
+                        O'qituvchilar tomonidan berilgan topshiriqlarni ko'ring, javoblaringizni yuklang va olingan baholarni kuzatib boring.
+                    </p>
+                </div>
+                <a class="btn btn-success w-100 mt-3 rounded-pill text-white" href="{% url 'assignment_list' %}">
+                    Vazifalarga o'tish <i class="bi bi-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

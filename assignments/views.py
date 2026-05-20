@@ -5,6 +5,8 @@ from .models import Assignment, Submission, Grade
 from .forms import SubmissionForm, GradeForm
 
 
+def home_view(request):
+    return render(request, 'home.html')
 
 
 def assignment_list(request):
